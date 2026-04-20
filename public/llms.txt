@@ -8,7 +8,7 @@ Pixelio builds high-converting websites for small businesses in Israel. Hebrew R
 ## Services
 - Basic Package (1,900 ₪): Single-page website + WhatsApp integration + Basic SEO
 - Plus Package (3,900 ₪): Multi-page website + Google My Business + Logo + Floating WhatsApp + Domain migration + Full SEO + GEO
-- Premium Package (6,900 ₪): Everything in Plus + Lead form + Launch campaign + 30 days free maintenance + Advanced SEO + GEO + Custom keyword strategy
+- Premium Package (6,900 ₪): Everything in Plus + Lead form + 30 days free maintenance + Advanced SEO + GEO + Custom keyword strategy
 - Maintenance Add-on: 249 ₪/month
 
 ## Contact
