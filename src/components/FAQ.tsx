@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
 import { useState } from "react";
+import { FaqJsonLd } from "@/components/JsonLd";
 
 type QA = { q: string; a: string };
 
@@ -38,6 +39,7 @@ export function FAQ() {
 
   return (
     <section id="faq" className="relative py-20 md:py-32">
+      <FaqJsonLd items={FAQS} />
       <div className="mx-auto max-w-3xl px-5 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

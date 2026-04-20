@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Heebo } from "next/font/google";
+import { OrganizationJsonLd } from "@/components/JsonLd";
 import "./globals.css";
 
 const heebo = Heebo({
@@ -13,7 +14,10 @@ const SITE_URL = "https://pixelio.co.il";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Pixelio — סוכנות אתרים לעסקים קטנים בישראל",
+  title: {
+    default: "Pixelio — סוכנות אתרים לעסקים קטנים בישראל",
+    template: "%s | Pixelio",
+  },
   description:
     "בונים אתרים שמביאים לקוחות. חבילות השקה החל מ-1,900 ₪. אתר חי תוך יום-יומיים. עד 3 תשלומים.",
   keywords: [
@@ -24,6 +28,9 @@ export const metadata: Metadata = {
     "בניית אתר תדמית",
     "עיצוב אתרים",
     "דף נחיתה",
+    "SEO",
+    "GEO",
+    "AI Search",
     "Pixelio",
   ],
   authors: [{ name: "Pixelio" }],
@@ -75,6 +82,7 @@ export default function RootLayout({
     <html lang="he" dir="rtl" className={heebo.variable}>
       <body className="font-sans bg-navy-950 text-white antialiased">
         {children}
+        <OrganizationJsonLd />
       </body>
     </html>
   );
