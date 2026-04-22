@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
-import Image from "next/image";
+import { Sparkles, ArrowUpLeft } from "lucide-react";
+
+const QI_FLOW_URL = "https://qi-flow-craft.lovable.app";
 
 export function Portfolio() {
   return (
@@ -24,37 +25,82 @@ export function Portfolio() {
         </motion.div>
 
         <div className="mt-14 grid grid-cols-1 gap-6 md:mt-20 md:grid-cols-3">
-          <motion.a
-            href="#contact"
+          {/* Featured — Qi Flow (live site) */}
+          <motion.article
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative col-span-1 overflow-hidden rounded-2xl border border-white/10 bg-navy-900/60 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-glow-md md:col-span-1"
+            className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-navy-900/60 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-glow-md"
           >
-            <div className="relative aspect-[16/10] overflow-hidden">
-              <Image
-                src="/portfolio/qi-flow-placeholder.svg"
-                alt="Qi Flow — אתר תדמית לעסק ריפוי הוליסטי"
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent" />
-            </div>
-            <div className="p-6">
+            {/* Live iframe thumbnail — renders the real site at full res then scales down */}
+            <a
+              href={QI_FLOW_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="פתיחת האתר של Qi Flow בחלון חדש"
+              className="relative block aspect-[16/10] overflow-hidden bg-navy-950"
+            >
+              <div
+                aria-hidden
+                className="pointer-events-none absolute left-0 top-0"
+                style={{
+                  width: "333.3333%",
+                  height: "333.3333%",
+                  transform: "scale(0.3)",
+                  transformOrigin: "top left",
+                }}
+              >
+                <iframe
+                  src={QI_FLOW_URL}
+                  title="Qi Flow — תצוגה מקדימה"
+                  loading="lazy"
+                  sandbox="allow-same-origin allow-scripts"
+                  className="h-full w-full border-0 bg-white"
+                  scrolling="no"
+                />
+              </div>
+
+              {/* Gradient overlay for legibility and "live" cue */}
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/10 to-transparent" />
+
+              {/* Live indicator */}
+              <div className="absolute left-4 top-4 flex items-center gap-1.5 rounded-full border border-white/15 bg-navy-950/70 px-3 py-1 text-[11px] font-semibold text-white/85 backdrop-blur-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
+                </span>
+                אתר חי
+              </div>
+            </a>
+
+            <div className="flex flex-1 flex-col p-6">
               <div className="flex items-center gap-2 text-xs font-medium text-accent">
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />
                 ריפוי הוליסטי
               </div>
               <h3 className="mt-2 text-xl font-bold md:text-2xl">Qi Flow</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/60">
-                אתר תדמית מלא לעסק ריפוי. דף ראשי + שירותים + יצירת קשר + טופס
-                הזמנת פגישה.
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-white/60">
+                אתר תדמית לקליניקה הוליסטית. כולל פירוט טיפולים, יצירת קשר
+                וכפתור וואטסאפ. עוצב עם אווירה רגועה וצבעים טבעיים.
               </p>
-            </div>
-          </motion.a>
 
+              <a
+                href={QI_FLOW_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:border-accent/40 hover:bg-accent/10 hover:text-white"
+              >
+                צפייה באתר
+                <ArrowUpLeft
+                  size={16}
+                  className="transition-transform group-hover:-translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
+            </div>
+          </motion.article>
+
+          {/* Coming-soon placeholders */}
           {[0, 1].map((i) => (
             <motion.div
               key={i}
