@@ -28,6 +28,7 @@ export function ContactForm() {
     const phone = String(fd.get("phone") || "").trim();
     const pkg = String(fd.get("package") || "").trim();
     const maintenance = fd.get("maintenance") === "on";
+    const socials = String(fd.get("socials") || "").trim();
     const message = String(fd.get("message") || "").trim();
 
     // Client-side validation with friendly Hebrew messages
@@ -58,7 +59,7 @@ export function ContactForm() {
       business ? `עסק: ${business}` : "",
       `טלפון: ${phone}`,
       `חבילה: ${pkg}${maintenance ? " + תוספת תחזוקה חודשית" : ""}`,
-      message ? "" : "",
+      socials ? `רשתות חברתיות: ${socials}` : "",
       message ? `הודעה: ${message}` : "",
     ].filter(Boolean);
 
@@ -75,6 +76,7 @@ export function ContactForm() {
         phone,
         package: pkg,
         maintenance,
+        socials,
         message,
       }),
     }).catch(() => {
@@ -205,6 +207,19 @@ export function ContactForm() {
                 249 ₪ לחודש — עדכוני תוכן, גיבויים, תמיכה בוואטסאפ
               </span>
             </span>
+          </label>
+
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-white/70">
+              רשתות חברתיות של העסק (לא חובה)
+            </span>
+            <input
+              type="text"
+              name="socials"
+              maxLength={500}
+              className={inputBase}
+              placeholder="קישור לאינסטגרם, פייסבוק, טיקטוק וכד׳ — אם יש"
+            />
           </label>
 
           <label className="block">
