@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { useState } from "react";
+import { waLink } from "@/lib/whatsapp";
 
 type Status = "idle" | "loading" | "ok" | "error";
 
@@ -22,36 +23,69 @@ export function ContactForm() {
     const form = e.currentTarget;
     const fd = new FormData(form);
 
-    const payload = {
-      name: String(fd.get("name") || ""),
-      business: String(fd.get("business") || ""),
-      phone: String(fd.get("phone") || ""),
-      package: String(fd.get("package") || ""),
-      maintenance: fd.get("maintenance") === "on",
-      message: String(fd.get("message") || ""),
-    };
+    const name = String(fd.get("name") || "").trim();
+    const business = String(fd.get("business") || "").trim();
+    const phone = String(fd.get("phone") || "").trim();
+    const pkg = String(fd.get("package") || "").trim();
+    const maintenance = fd.get("maintenance") === "on";
+    const message = String(fd.get("message") || "").trim();
+
+    // Client-side validation with friendly Hebrew messages
+    setErrorMsg("");
+    if (name.length < 2) {
+      setStatus("error");
+      setErrorMsg("נא למלא שם מלא");
+      return;
+    }
+    if (!/^[0-9+\-\s]{6,}$/.test(phone)) {
+      setStatus("error");
+      setErrorMsg("נא למלא מספר טלפון תקין");
+      return;
+    }
+    if (!pkg) {
+      setStatus("error");
+      setErrorMsg("נא לבחור חבילה שמעניינת אתכם");
+      return;
+    }
 
     setStatus("loading");
-    setErrorMsg("");
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      const data = await res.json();
+    // Build a tidy WhatsApp message with all the form data, pre-filled for the visitor.
+    const lines = [
+      "היי! שלחתי פרטים דרך האתר של Pixelio:",
+      "",
+      `שם: ${name}`,
+      business ? `עסק: ${business}` : "",
+      `טלפון: ${phone}`,
+      `חבילה: ${pkg}${maintenance ? " + תוספת תחזוקה חודשית" : ""}`,
+      message ? "" : "",
+      message ? `הודעה: ${message}` : "",
+    ].filter(Boolean);
 
-      if (!res.ok || !data.ok) {
-        throw new Error(data.error || "request_failed");
-      }
+    const whatsappUrl = waLink(lines.join("\n"));
 
-      setStatus("ok");
-      form.reset();
-    } catch (err) {
-      setStatus("error");
-      setErrorMsg(err instanceof Error ? err.message : "שגיאה לא צפויה");
-    }
+    // Fire-and-forget backup to /api/contact (lands in Vercel logs even if the
+    // visitor closes WhatsApp without pressing send).
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        business,
+        phone,
+        package: pkg,
+        maintenance,
+        message,
+      }),
+    }).catch(() => {
+      // Silent — WhatsApp is the primary path.
+    });
+
+    // Open WhatsApp in a new tab with the pre-filled message.
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+    setStatus("ok");
+    form.reset();
   }
 
   const inputBase =
@@ -71,8 +105,8 @@ export function ContactForm() {
             מעדיפים לשלוח פרטים?
           </h2>
           <p className="mt-5 text-base text-white/60 md:text-lg">
-            מלאו את הטופס — נחזור אליכם בוואטסאפ. אפשר גם ללחוץ על כפתור הוואטסאפ
-            בפינה.
+            מלאו את הטופס — בלחיצה על שליחה, נפתח לכם חלון וואטסאפ עם כל הפרטים
+            כבר ממולאים. אתם רק לוחצים שלח.
           </p>
         </motion.div>
 
@@ -208,7 +242,8 @@ export function ContactForm() {
             <div className="flex items-start gap-2 rounded-xl border border-green-500/30 bg-green-500/10 p-4 text-sm text-green-300">
               <CheckCircle2 size={20} className="mt-0.5 shrink-0" />
               <span>
-                קיבלנו את הפרטים — נחזור אליכם בוואטסאפ בהקדם. תודה!
+                נפתח לכם חלון וואטסאפ עם כל הפרטים — רק ללחוץ שלח ונקבל את
+                הפנייה מייד. תודה!
               </span>
             </div>
           )}
@@ -216,9 +251,7 @@ export function ContactForm() {
           {status === "error" && (
             <div className="flex items-start gap-2 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-300">
               <AlertCircle size={20} className="mt-0.5 shrink-0" />
-              <span>
-                משהו השתבש ({errorMsg}). נסו שוב או שלחו הודעה בוואטסאפ.
-              </span>
+              <span>{errorMsg}</span>
             </div>
           )}
         </motion.form>
