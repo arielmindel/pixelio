@@ -55,3 +55,41 @@ export function FaqJsonLd({ items }: { items: FaqItem[] }) {
     />
   );
 }
+
+type ServiceItem = {
+  name: string;
+  description: string;
+  price: string; // ILS, numeric string (no symbols)
+};
+
+export function ServicesJsonLd({ services }: { services: ServiceItem[] }) {
+  // Each package becomes its own Service + Offer.
+  const data = services.map((svc) => ({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: `Pixelio — חבילת ${svc.name}`,
+    serviceType: "Web Design and Development",
+    provider: {
+      "@type": "Organization",
+      name: "Pixelio",
+      url: SITE_URL,
+    },
+    areaServed: { "@type": "Country", name: "Israel" },
+    description: svc.description,
+    offers: {
+      "@type": "Offer",
+      price: svc.price,
+      priceCurrency: "ILS",
+      availability: "https://schema.org/InStock",
+      url: `${SITE_URL}/#packages`,
+    },
+  }));
+
+  return (
+    <script
+      type="application/ld+json"
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}

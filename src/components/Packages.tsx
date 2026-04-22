@@ -1,14 +1,17 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Check, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Check, Sparkles, ChevronDown } from "lucide-react";
+import { useState } from "react";
 import { waLink } from "@/lib/whatsapp";
+import { ServicesJsonLd } from "@/components/JsonLd";
 
 type Package = {
   name: string;
   price: string;
   subtitle: string;
   features: string[];
+  details: string;
   cta: string;
   whatsappMessage: string;
   featured: boolean;
@@ -26,6 +29,8 @@ const PACKAGES: Package[] = [
       "העלאה לאוויר",
       "אספקה תוך יום אחד",
     ],
+    details:
+      "חבילת בסיס לעסק שצריך נוכחות מהירה באינטרנט. דף נחיתה יחיד עם כל המידע החשוב: מה העסק מציע, איך ליצור קשר, וכפתור וואטסאפ גדול שמחבר ישירות. האתר רספונסיבי מלא למובייל, טעינה מהירה, ומוכן לגוגל עם meta tags בסיסיים. מתאים במיוחד לעסקים שרוצים לפתוח נוכחות דיגיטלית מהר ובמחיר נגיש.",
     cta: "בחרו בייסיק",
     whatsappMessage: "היי, אני מעוניין בחבילת בייסיק של Pixelio",
     featured: false,
@@ -43,6 +48,8 @@ const PACKAGES: Package[] = [
       "SEO מלא + אופטימיזציה ל-AI Search (GEO) — האתר מופיע גם בגוגל וגם בתוצאות של ChatGPT, Gemini ו-AI אחרים",
       "אספקה תוך יומיים",
     ],
+    details:
+      "החבילה המומלצת לרוב העסקים. אתר רב-דפים שמציג את העסק בצורה מלאה: דף הבית, שירותים, אודות, יצירת קשר ועוד — עד 5 דפים. כוללת לוגו מעוצב במיוחד עבורכם, רישום ב-Google Business Profile (כדי שהעסק יופיע בגוגל מפות), טיפול מלא בדומיין (העברה קיים או רכישה חדש), ו-SEO + GEO — אופטימיזציה כפולה שמבטיחה שהאתר יופיע גם בגוגל וגם בתוצאות של ChatGPT ו-Gemini כשלקוחות שואלים על העסק שלכם.",
     cta: "בחרו פלוס",
     whatsappMessage: "היי, אני מעוניין בחבילת פלוס של Pixelio",
     featured: true,
@@ -59,6 +66,8 @@ const PACKAGES: Package[] = [
       "עדיפות בתמיכה",
       "אספקה תוך 3 ימים",
     ],
+    details:
+      "חבילת הדגל לעסק שרוצה הכל. כוללת את כל מה שיש בפלוס, ובנוסף: טופס ליד חכם שמתחבר ישירות לוואטסאפ שלכם עם התראות מיידיות, אסטרטגיית מילות מפתח אישית שנבנית עבור העסק שלכם ספציפית כדי למקסם חשיפה במנועי חיפוש וב-AI, וחודש ראשון של תחזוקה שוטפת חינם בשווי 249 ₪ (עדכוני תוכן, גיבויים, ותיקוני באגים כלולים). עדיפות בתמיכה אומרת שהודעות שלכם נענות ראשונות.",
     cta: "בחרו פרימיום",
     whatsappMessage: "היי, אני מעוניין בחבילת פרימיום של Pixelio",
     featured: false,
@@ -68,6 +77,15 @@ const PACKAGES: Package[] = [
 export function Packages() {
   return (
     <section id="packages" className="relative py-20 md:py-32">
+      {/* Service structured data — one per package */}
+      <ServicesJsonLd
+        services={PACKAGES.map((p) => ({
+          name: p.name,
+          description: p.details,
+          price: p.price.replace(/[^0-9]/g, ""),
+        }))}
+      />
+
       {/* Subtle background accent */}
       <div
         aria-hidden
@@ -92,76 +110,7 @@ export function Packages() {
 
         <div className="mt-14 grid grid-cols-1 gap-6 md:mt-20 md:grid-cols-3 md:items-start md:gap-5 lg:gap-6">
           {PACKAGES.map((pkg, i) => (
-            <motion.div
-              key={pkg.name}
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{
-                duration: 0.6,
-                delay: i * 0.12,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className={`relative flex flex-col rounded-2xl p-7 md:p-8 ${
-                pkg.featured
-                  ? "border-2 border-accent bg-gradient-to-b from-navy-800 to-navy-900 shadow-glow-lg md:-translate-y-4 md:scale-[1.03]"
-                  : "border border-white/10 bg-navy-900/60 backdrop-blur-sm"
-              }`}
-            >
-              {pkg.featured && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <div className="flex items-center gap-1.5 rounded-full bg-gradient-to-l from-accent to-purple-500 px-4 py-1.5 text-xs font-bold text-white shadow-glow-md">
-                    <Sparkles size={14} strokeWidth={2.5} />
-                    הכי פופולרי
-                  </div>
-                </div>
-              )}
-
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold md:text-3xl">{pkg.name}</h3>
-                <p className="mt-1 text-sm text-white/60">{pkg.subtitle}</p>
-              </div>
-
-              <div className="mb-8 flex items-baseline gap-1.5">
-                <span className="text-5xl font-black tracking-tight md:text-6xl">
-                  {pkg.price}
-                </span>
-                <span className="text-2xl font-bold text-white/70">₪</span>
-              </div>
-
-              <ul className="mb-8 flex-1 space-y-3.5">
-                {pkg.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="flex items-start gap-3 text-sm text-white/80 md:text-base"
-                  >
-                    <span
-                      className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
-                        pkg.featured
-                          ? "bg-accent/20 text-accent"
-                          : "bg-white/10 text-white/70"
-                      }`}
-                    >
-                      <Check size={12} strokeWidth={3} />
-                    </span>
-                    <span className="leading-snug">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href={waLink(pkg.whatsappMessage)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`block rounded-full px-6 py-3.5 text-center text-base font-semibold transition-all ${
-                  pkg.featured
-                    ? "bg-accent text-white shadow-glow-md hover:bg-accent-hover hover:shadow-glow-lg"
-                    : "border border-white/15 bg-white/5 text-white hover:border-white/30 hover:bg-white/10"
-                }`}
-              >
-                {pkg.cta}
-              </a>
-            </motion.div>
+            <PackageCard key={pkg.name} pkg={pkg} index={i} />
           ))}
         </div>
 
@@ -176,5 +125,117 @@ export function Packages() {
         </motion.p>
       </div>
     </section>
+  );
+}
+
+function PackageCard({ pkg, index }: { pkg: Package; index: number }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.12,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      className={`relative flex flex-col rounded-2xl p-7 md:p-8 ${
+        pkg.featured
+          ? "border-2 border-accent bg-gradient-to-b from-navy-800 to-navy-900 shadow-glow-lg md:-translate-y-4 md:scale-[1.03]"
+          : "border border-white/10 bg-navy-900/60 backdrop-blur-sm"
+      }`}
+    >
+      {pkg.featured && (
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+          <div className="flex items-center gap-1.5 rounded-full bg-gradient-to-l from-accent to-purple-500 px-4 py-1.5 text-xs font-bold text-white shadow-glow-md">
+            <Sparkles size={14} strokeWidth={2.5} />
+            הכי פופולרי
+          </div>
+        </div>
+      )}
+
+      <div className="mb-6">
+        <h3 className="text-2xl font-bold md:text-3xl">{pkg.name}</h3>
+        <p className="mt-1 text-sm text-white/60">{pkg.subtitle}</p>
+      </div>
+
+      <div className="mb-8 flex items-baseline gap-1.5">
+        <span className="text-5xl font-black tracking-tight md:text-6xl">
+          {pkg.price}
+        </span>
+        <span className="text-2xl font-bold text-white/70">₪</span>
+      </div>
+
+      <ul className="mb-6 flex-1 space-y-3.5">
+        {pkg.features.map((feature) => (
+          <li
+            key={feature}
+            className="flex items-start gap-3 text-sm text-white/80 md:text-base"
+          >
+            <span
+              className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
+                pkg.featured
+                  ? "bg-accent/20 text-accent"
+                  : "bg-white/10 text-white/70"
+              }`}
+            >
+              <Check size={12} strokeWidth={3} />
+            </span>
+            <span className="leading-snug">{feature}</span>
+          </li>
+        ))}
+      </ul>
+
+      {/* Expandable details */}
+      <div className="mb-5">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          className="flex w-full items-center justify-between gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm font-medium text-white/70 transition-colors hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
+        >
+          <span>{open ? "הסתירו פרטים" : "מה כלול בפירוט"}</span>
+          <motion.span
+            animate={{ rotate: open ? 180 : 0 }}
+            transition={{ duration: 0.2 }}
+            aria-hidden
+          >
+            <ChevronDown size={16} />
+          </motion.span>
+        </button>
+
+        <AnimatePresence initial={false}>
+          {open && (
+            <motion.div
+              key="details"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-hidden"
+            >
+              <p className="pt-3 text-sm leading-relaxed text-white/65">
+                {pkg.details}
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      <a
+        href={waLink(pkg.whatsappMessage)}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`block rounded-full px-6 py-3.5 text-center text-base font-semibold transition-all ${
+          pkg.featured
+            ? "bg-accent text-white shadow-glow-md hover:bg-accent-hover hover:shadow-glow-lg"
+            : "border border-white/15 bg-white/5 text-white hover:border-white/30 hover:bg-white/10"
+        }`}
+      >
+        {pkg.cta}
+      </a>
+    </motion.div>
   );
 }

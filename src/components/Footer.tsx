@@ -73,7 +73,23 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-8 text-xs text-white/40 md:flex-row">
-          <p>© 2026 Pixelio. כל הזכויות שמורות.</p>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <p>© 2026 Pixelio. כל הזכויות שמורות.</p>
+            <span className="hidden text-white/20 md:inline">·</span>
+            <Link
+              href="/privacy"
+              className="transition-colors hover:text-white/70"
+            >
+              מדיניות פרטיות
+            </Link>
+            <span className="text-white/20">·</span>
+            <Link
+              href="/terms"
+              className="transition-colors hover:text-white/70"
+            >
+              תנאי שימוש
+            </Link>
+          </div>
           <p>עוצב ונבנה באהבה בישראל 🇮🇱</p>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Heebo } from "next/font/google";
 import { OrganizationJsonLd } from "@/components/JsonLd";
+import { Analytics } from "@/components/Analytics";
 import "./globals.css";
 
 const heebo = Heebo({
@@ -64,6 +65,10 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    // Google Search Console meta tag — set NEXT_PUBLIC_GSC_VERIFICATION in .env.local
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION,
+  },
   category: "business",
 };
 
@@ -83,6 +88,7 @@ export default function RootLayout({
       <body className="font-sans bg-navy-950 text-white antialiased">
         {children}
         <OrganizationJsonLd />
+        <Analytics />
       </body>
     </html>
   );
