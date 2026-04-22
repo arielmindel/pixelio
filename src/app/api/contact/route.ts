@@ -7,6 +7,7 @@ type ContactPayload = {
   business?: string;
   phone?: string;
   package?: string;
+  maintenance?: boolean;
   message?: string;
 };
 
@@ -25,7 +26,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const { name, business, phone, package: pkg, message } = payload;
+  const { name, business, phone, package: pkg, maintenance, message } = payload;
 
   // Basic validation — every required field present.
   if (
@@ -52,6 +53,7 @@ export async function POST(request: Request) {
     business: isString(business, 0, 200) ? business.trim() : "",
     phone: phone.trim(),
     package: pkg.trim(),
+    maintenance: maintenance === true,
     message: isString(message, 0, 2000) ? message.trim() : "",
     receivedAt: new Date().toISOString(),
   };

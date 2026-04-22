@@ -11,7 +11,6 @@ const PACKAGES = [
   "בייסיק (1,900 ₪)",
   "פלוס (3,900 ₪)",
   "פרימיום (6,900 ₪)",
-  "תחזוקה (249 ₪/חודש)",
 ];
 
 export function ContactForm() {
@@ -28,6 +27,7 @@ export function ContactForm() {
       business: String(fd.get("business") || ""),
       phone: String(fd.get("phone") || ""),
       package: String(fd.get("package") || ""),
+      maintenance: fd.get("maintenance") === "on",
       message: String(fd.get("message") || ""),
     };
 
@@ -155,6 +155,23 @@ export function ContactForm() {
               </select>
             </label>
           </div>
+
+          {/* Maintenance add-on — optional extra on top of the chosen package */}
+          <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-navy-900/40 p-4 transition-colors hover:border-white/20 hover:bg-navy-900/60">
+            <input
+              type="checkbox"
+              name="maintenance"
+              className="mt-0.5 h-4 w-4 shrink-0 accent-accent"
+            />
+            <span className="flex-1 text-sm text-white/80 md:text-base">
+              <span className="font-semibold text-white">
+                להוסיף גם חבילת תחזוקה חודשית
+              </span>
+              <span className="block text-xs text-white/55 md:text-sm">
+                249 ₪ לחודש — עדכוני תוכן, גיבויים, תמיכה בוואטסאפ
+              </span>
+            </span>
+          </label>
 
           <label className="block">
             <span className="mb-1.5 block text-sm font-medium text-white/70">
