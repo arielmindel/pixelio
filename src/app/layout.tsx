@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Heebo } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { OrganizationJsonLd } from "@/components/JsonLd";
-import { Analytics } from "@/components/Analytics";
+import { Clarity } from "@/components/Clarity";
 import "./globals.css";
 
 const heebo = Heebo({
@@ -90,7 +90,7 @@ export default function RootLayout({
         {children}
         <GoogleAnalytics gaId="G-D8PM2J4JS5" />
         <OrganizationJsonLd />
-        <Analytics />
+        <Clarity />
       </body>
     </html>
   );
