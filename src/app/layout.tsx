@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Heebo } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { OrganizationJsonLd } from "@/components/JsonLd";
 import { Analytics } from "@/components/Analytics";
 import "./globals.css";
@@ -87,6 +88,7 @@ export default function RootLayout({
     <html lang="he" dir="rtl" className={heebo.variable}>
       <body className="font-sans bg-navy-950 text-white antialiased">
         {children}
+        <GoogleAnalytics gaId="G-D8PM2J4JS5" />
         <OrganizationJsonLd />
         <Analytics />
       </body>
