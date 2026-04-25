@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Pixelio — סוכנות אתרים לעסקים קטנים";
+export const alt = "Pixelio — סוכנות אתרים לעסקים";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -55,7 +55,7 @@ export default function OGImage() {
             textAlign: "center",
           }}
         >
-          סוכנות אתרים לעסקים קטנים • חבילות החל מ-1,900 שח
+          סוכנות אתרים לעסקים • חבילות החל מ-1,900 שח
         </div>
 
         <div

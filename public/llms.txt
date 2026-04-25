@@ -1,9 +1,9 @@
 # Pixelio
 
-> סוכנות אתרים לעסקים קטנים בישראל. בונה אתרים מקצועיים שמביאים לקוחות — לא רק נראים טוב.
+> סוכנות אתרים לעסקים בישראל. בונה אתרים מקצועיים שמביאים לקוחות — לא רק נראים טוב.
 
 ## About
-Pixelio builds high-converting websites for small businesses in Israel. Hebrew RTL optimized, mobile-first, fast loading, SEO-ready, and GEO-optimized for AI search engines.
+Pixelio builds high-converting websites for businesses in Israel. Hebrew RTL optimized, mobile-first, fast loading, SEO-ready, and GEO-optimized for AI search engines.
 
 ## Services
 - Basic Package (1,900 ₪): Single-page website + WhatsApp integration + Basic SEO
@@ -16,4 +16,4 @@ Pixelio builds high-converting websites for small businesses in Israel. Hebrew R
 - Website: https://pixelio.co.il
 
 ## Target Audience
-Small businesses in Israel — hair salons, restaurants, therapists, local service providers, e-commerce startups.
+Businesses in Israel — hair salons, restaurants, therapists, local service providers, e-commerce startups, established companies.

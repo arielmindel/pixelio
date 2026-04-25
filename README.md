@@ -1,6 +1,6 @@
 # Pixelio — Agency Landing Page
 
-אתר תדמית של [Pixelio](https://pixelio.co.il) — סוכנות אתרים לעסקים קטנים בישראל.
+אתר תדמית של [Pixelio](https://pixelio.co.il) — סוכנות אתרים לעסקים בישראל.
 
 Hebrew-first, RTL, dark premium theme. Built with Next.js 14 App Router.
 

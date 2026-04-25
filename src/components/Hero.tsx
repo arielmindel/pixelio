@@ -77,8 +77,8 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto mt-6 max-w-2xl text-balance text-base leading-relaxed text-white/70 md:mt-8 md:text-xl"
         >
-          סוכנות אתרים לעסקים קטנים בישראל. מקבלים אתר חי תוך יום-יומיים — עם
-          תשלום נוח בעד 3 תשלומים.
+          סוכנות אתרים לעסקים בישראל. מקבלים אתר חי תוך יום-יומיים — עם תשלום
+          נוח בעד 3 תשלומים.
         </motion.p>
 
         <motion.div

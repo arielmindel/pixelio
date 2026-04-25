@@ -17,7 +17,7 @@ const SITE_URL = "https://pixelio.co.il";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Pixelio — סוכנות אתרים לעסקים קטנים בישראל",
+    default: "Pixelio — סוכנות אתרים לעסקים בישראל",
     template: "%s | Pixelio",
   },
   description:
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "בניית אתרים",
     "סוכנות אתרים",
     "אתר לעסק",
-    "אתרים לעסקים קטנים",
+    "אתרים לעסקים",
     "בניית אתר תדמית",
     "עיצוב אתרים",
     "דף נחיתה",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   openGraph: {
-    title: "Pixelio — סוכנות אתרים לעסקים קטנים בישראל",
+    title: "Pixelio — סוכנות אתרים לעסקים בישראל",
     description:
       "בונים אתרים שמביאים לקוחות. חבילות השקה החל מ-1,900 ₪. אתר חי תוך יום-יומיים.",
     url: SITE_URL,
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pixelio — סוכנות אתרים לעסקים קטנים בישראל",
+    title: "Pixelio — סוכנות אתרים לעסקים בישראל",
     description:
       "בונים אתרים שמביאים לקוחות. חבילות השקה החל מ-1,900 ₪. אתר חי תוך יום-יומיים.",
   },

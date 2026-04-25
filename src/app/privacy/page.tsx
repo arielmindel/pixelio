@@ -30,7 +30,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-xl font-bold text-white md:text-2xl">1. מי אנחנו</h2>
             <p className="mt-3 leading-relaxed">
-              Pixelio היא סוכנות אתרים לעסקים קטנים בישראל. בעלי האתר:
+              Pixelio היא סוכנות אתרים לעסקים בישראל. בעלי האתר:
               אריאל מינדל. ליצירת קשר: arielmindel10@gmail.com,
               וואטסאפ 058-712-2010.
             </p>

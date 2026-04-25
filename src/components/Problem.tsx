@@ -39,7 +39,7 @@ export function Problem() {
           className="mx-auto max-w-3xl text-center"
         >
           <h2 className="text-balance text-3xl font-black leading-tight tracking-tight md:text-5xl">
-            למה עסקים קטנים מפסידים לקוחות באינטרנט?
+            למה עסקים מפסידים לקוחות באינטרנט?
           </h2>
           <p className="mt-5 text-base text-white/60 md:text-lg">
             שלוש סיבות שאנחנו רואים כמעט בכל יום — וכולן ניתנות לתיקון.

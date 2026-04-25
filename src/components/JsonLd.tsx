@@ -5,7 +5,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "Pixelio",
   description:
-    "סוכנות אתרים לעסקים קטנים בישראל — בניית אתרים שמביאים לקוחות",
+    "סוכנות אתרים לעסקים בישראל — בניית אתרים שמביאים לקוחות",
   url: SITE_URL,
   logo: `${SITE_URL}/icon`,
   founder: {
