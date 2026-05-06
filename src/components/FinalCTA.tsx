@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowLeft } from "lucide-react";
 import { waLink } from "@/lib/whatsapp";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 
@@ -30,36 +31,40 @@ export function FinalCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="text-balance text-4xl font-black leading-tight tracking-tight md:text-6xl"
+          className="text-balance text-3xl font-black leading-tight tracking-tight md:text-5xl"
         >
-          מוכנים להתחיל?
+          הלקוחות שלך כותבים. הבוט שלך עונה.
+          <br />
+          <span className="bg-gradient-to-br from-white via-accent-light to-purple-300 bg-clip-text text-transparent">
+            הקסם מתחיל בשבוע הבא.
+          </span>
         </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-          className="mx-auto mt-5 max-w-xl text-balance text-base text-white/80 md:mt-6 md:text-xl"
-        >
-          בוחרים חבילה, שולחים הודעה, מתחילים לבנות.
-        </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-10"
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
           <a
-            href={waLink("היי, ראיתי את האתר של Pixelio ואני רוצה להתחיל פרויקט")}
+            href="/demo"
+            className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-base font-semibold text-navy-950 shadow-lg transition-all hover:bg-white/90 sm:w-auto"
+          >
+            ראה דמו
+            <ArrowLeft
+              size={18}
+              className="transition-transform group-hover:-translate-x-1"
+            />
+          </a>
+          <a
+            href={waLink("היי, אני רוצה בוט וואטסאפ לעסק שלי")}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#25D366] px-8 py-5 text-lg font-bold text-white shadow-[0_8px_30px_rgba(37,211,102,0.4)] transition-all hover:bg-[#1EBA57] hover:shadow-[0_12px_40px_rgba(37,211,102,0.55)]"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-base font-semibold text-white backdrop-blur-sm transition-all hover:border-white/40 hover:bg-white/15 sm:w-auto"
           >
-            <WhatsAppIcon size={22} />
-            שלחו הודעה בוואטסאפ
+            <WhatsAppIcon size={18} />
+            דבר איתנו
           </a>
         </motion.div>
       </div>

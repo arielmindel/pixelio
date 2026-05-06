@@ -3,11 +3,12 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { waLink } from "@/lib/whatsapp";
 
 const LINKS = [
-  { label: "עלינו", href: "#about" },
-  { label: "חבילות", href: "#packages" },
-  { label: "תיק עבודות", href: "#portfolio" },
+  { label: "איך זה עובד", href: "#solution" },
+  { label: "מחיר", href: "#packages" },
+  { label: "דמו חי", href: "/demo" },
   { label: "שאלות נפוצות", href: "#faq" },
 ];
 
@@ -53,7 +54,9 @@ export function Navbar() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#packages"
+            href={waLink("היי, אני מעוניין בבוט וואטסאפ של Pixelio")}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-glow-sm transition-all hover:bg-accent-hover hover:shadow-glow-md md:inline-block"
           >
             דברו איתנו
@@ -93,7 +96,9 @@ export function Navbar() {
               ))}
               <li className="mt-2">
                 <a
-                  href="#packages"
+                  href={waLink("היי, אני מעוניין בבוט וואטסאפ של Pixelio")}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
                   className="block rounded-full bg-accent px-5 py-3 text-center text-sm font-semibold text-white"
                 >

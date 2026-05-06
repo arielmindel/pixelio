@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Pixelio — סוכנות אתרים לעסקים";
+export const alt = "Pixelio — בוטי וואטסאפ AI לעסקים";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -45,7 +45,7 @@ export default function OGImage() {
             maxWidth: 900,
           }}
         >
-          אתרים שמביאים לקוחות
+          בוט וואטסאפ שעונה ללקוחות 24/7
         </div>
         <div
           style={{
@@ -55,7 +55,7 @@ export default function OGImage() {
             textAlign: "center",
           }}
         >
-          סוכנות אתרים לעסקים • חבילות החל מ-1,900 שח
+          בוטי AI לעסקים בישראל • הקמה תוך 7 ימים
         </div>
 
         <div
@@ -68,9 +68,9 @@ export default function OGImage() {
             fontSize: 22,
           }}
         >
-          <div>אספקה תוך יומיים</div>
-          <div>עד 3 תשלומים</div>
-          <div>שבועיים אחריות</div>
+          <div>בעברית טבעית</div>
+          <div>ללא התחייבות</div>
+          <div>הקמה תוך 7 ימים</div>
         </div>
       </div>
     ),

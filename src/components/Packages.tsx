@@ -1,98 +1,58 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { Check, Sparkles, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { motion } from "framer-motion";
+import { Check, Sparkles, Plus } from "lucide-react";
 import { waLink } from "@/lib/whatsapp";
 import { ServicesJsonLd } from "@/components/JsonLd";
 
-type Package = {
+const MAIN_FEATURES = [
+  "בניית הבוט מאפס לעסק שלך",
+  "חיבור ל-WhatsApp Business",
+  "מאגר ידע מותאם אישית",
+  "דשבורד לעריכת תוכן",
+  "תחזוקה שוטפת ועדכוני AI כלולים",
+];
+
+type AddOn = {
   name: string;
   price: string;
-  subtitle: string;
-  features: string[];
-  details: string;
-  cta: string;
-  whatsappMessage: string;
-  featured: boolean;
+  description: string;
 };
 
-const PACKAGES: Package[] = [
+const ADD_ONS: AddOn[] = [
   {
-    name: "בייסיק",
-    price: "1,900",
-    subtitle: "דף נחיתה שעובד",
-    features: [
-      "אתר דף אחד מותאם למובייל",
-      "כפתור וואטסאפ צף",
-      "SEO בסיסי לגוגל",
-      "העלאה לאוויר",
-      "אספקה תוך יום אחד",
-    ],
-    details:
-      "חבילת בסיס לעסק שצריך נוכחות מהירה באינטרנט. דף נחיתה יחיד עם כל המידע החשוב: מה העסק מציע, איך ליצור קשר, וכפתור וואטסאפ גדול שמחבר ישירות. האתר רספונסיבי מלא למובייל, טעינה מהירה, ומוכן לגוגל עם meta tags בסיסיים. מתאים במיוחד לעסקים שרוצים לפתוח נוכחות דיגיטלית מהר ובמחיר נגיש.",
-    cta: "בחרו בייסיק",
-    whatsappMessage: "היי, אני מעוניין בחבילת בייסיק של Pixelio",
-    featured: false,
+    name: "Multi-Channel",
+    price: "+100 ₪/חודש",
+    description: "אותו בוט עונה גם ב-Instagram וב-Facebook Messenger.",
   },
   {
-    name: "פלוס",
-    price: "3,900",
-    subtitle: "חבילת הדגל — הכי משתלם",
-    features: [
-      "אתר רב-דפים (עד 5 דפים)",
-      "כל מה שבבייסיק",
-      "לוגו מעוצב",
-      "רישום ב-Google My Business",
-      "העברת דומיין קיים (או קנייה לכם)",
-      "SEO מלא + אופטימיזציה ל-AI Search (GEO) — האתר מופיע גם בגוגל וגם בתוצאות של ChatGPT, Gemini ו-AI אחרים",
-      "אספקה תוך יומיים",
-    ],
-    details:
-      "החבילה המומלצת לרוב העסקים. אתר רב-דפים שמציג את העסק בצורה מלאה: דף הבית, שירותים, אודות, יצירת קשר ועוד — עד 5 דפים. כוללת לוגו מעוצב במיוחד עבורכם, רישום ב-Google Business Profile (כדי שהעסק יופיע בגוגל מפות), טיפול מלא בדומיין (העברה קיים או רכישה חדש), ו-SEO + GEO — אופטימיזציה כפולה שמבטיחה שהאתר יופיע גם בגוגל וגם בתוצאות של ChatGPT ו-Gemini כשלקוחות שואלים על העסק שלכם.",
-    cta: "בחרו פלוס",
-    whatsappMessage: "היי, אני מעוניין בחבילת פלוס של Pixelio",
-    featured: true,
-  },
-  {
-    name: "פרימיום",
-    price: "6,900",
-    subtitle: "הכל כלול + שיווק",
-    features: [
-      "כל מה שבפלוס",
-      "טופס ליד חכם",
-      "SEO + GEO מתקדמים + אסטרטגיית מילות מפתח אישית — האתר שלך מותאם להופיע במנועי חיפוש מסורתיים ו-AI",
-      "חודש תחזוקה חינם (שווי 249 ₪)",
-      "עדיפות בתמיכה",
-      "אספקה תוך 3 ימים",
-    ],
-    details:
-      "חבילת הדגל לעסק שרוצה הכל. כוללת את כל מה שיש בפלוס, ובנוסף: טופס ליד חכם שמתחבר ישירות לוואטסאפ שלכם עם התראות מיידיות, אסטרטגיית מילות מפתח אישית שנבנית עבור העסק שלכם ספציפית כדי למקסם חשיפה במנועי חיפוש וב-AI, וחודש ראשון של תחזוקה שוטפת חינם בשווי 249 ₪ (עדכוני תוכן, גיבויים, ותיקוני באגים כלולים). עדיפות בתמיכה אומרת שהודעות שלכם נענות ראשונות.",
-    cta: "בחרו פרימיום",
-    whatsappMessage: "היי, אני מעוניין בחבילת פרימיום של Pixelio",
-    featured: false,
+    name: "אינטגרציה ליומן + תשלומים",
+    price: "+150 ₪/חודש",
+    description:
+      "סנכרון ליומן Google/Calendly וקישורי תשלום ישירים בשיחה עם הלקוח.",
   },
 ];
 
 export function Packages() {
   return (
     <section id="packages" className="relative py-20 md:py-32">
-      {/* Service structured data — one per package */}
       <ServicesJsonLd
-        services={PACKAGES.map((p) => ({
-          name: p.name,
-          description: p.details,
-          price: p.price.replace(/[^0-9]/g, ""),
-        }))}
+        services={[
+          {
+            name: "חבילת השקה",
+            description:
+              "בוט וואטסאפ מבוסס AI לעסק. הקמה חד-פעמית 2,500 ₪ + תחזוקה חודשית 250–350 ₪.",
+            price: "2500",
+          },
+        ]}
       />
 
-      {/* Subtle background accent */}
       <div
         aria-hidden
         className="absolute inset-x-0 top-1/4 -z-10 mx-auto h-[500px] max-w-4xl rounded-full bg-accent/10 blur-[120px]"
       />
 
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
+      <div className="mx-auto max-w-5xl px-5 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -101,141 +61,139 @@ export function Packages() {
           className="mx-auto max-w-3xl text-center"
         >
           <h2 className="text-balance text-3xl font-black leading-tight tracking-tight md:text-5xl">
-            3 חבילות השקה. בחרו את המתאימה לכם.
+            חבילה אחת. מחיר ברור.
           </h2>
           <p className="mt-5 text-base text-white/60 md:text-lg">
-            מחירים סופיים. בלי הפתעות. עד 3 תשלומים ללא ריבית בכרטיס אשראי.
+            הקמה חד-פעמית, תחזוקה חודשית, ללא התחייבות. אפשר לבטל בכל חודש.
           </p>
         </motion.div>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 md:mt-20 md:grid-cols-3 md:items-start md:gap-5 lg:gap-6">
-          {PACKAGES.map((pkg, i) => (
-            <PackageCard key={pkg.name} pkg={pkg} index={i} />
-          ))}
-        </div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-10 text-center text-sm text-white/50 md:mt-14"
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="relative mx-auto mt-14 max-w-2xl rounded-2xl border-2 border-accent bg-gradient-to-b from-navy-800 to-navy-900 p-7 shadow-glow-lg md:mt-20 md:p-10"
         >
-          כל החבילות כוללות אחריות לשבועיים ותמיכה בוואטסאפ.
-        </motion.p>
-      </div>
-    </section>
-  );
-}
+          <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+            <div className="flex items-center gap-1.5 rounded-full bg-gradient-to-l from-accent to-purple-500 px-4 py-1.5 text-xs font-bold text-white shadow-glow-md">
+              <Sparkles size={14} strokeWidth={2.5} />
+              חבילת השקה
+            </div>
+          </div>
 
-function PackageCard({ pkg, index }: { pkg: Package; index: number }) {
-  const [open, setOpen] = useState(false);
+          <div className="mb-6 text-center md:mb-8">
+            <h3 className="text-2xl font-bold md:text-3xl">חבילת השקה</h3>
+            <p className="mt-2 text-sm text-white/60">
+              הכל מה שצריך כדי להעלות בוט באוויר ולשמור עליו חי.
+            </p>
+          </div>
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.12,
-        ease: [0.16, 1, 0.3, 1],
-      }}
-      className={`relative flex flex-col rounded-2xl p-7 md:p-8 ${
-        pkg.featured
-          ? "border-2 border-accent bg-gradient-to-b from-navy-800 to-navy-900 shadow-glow-lg md:-translate-y-4 md:scale-[1.03]"
-          : "border border-white/10 bg-navy-900/60 backdrop-blur-sm"
-      }`}
-    >
-      {pkg.featured && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-          <div className="flex items-center gap-1.5 rounded-full bg-gradient-to-l from-accent to-purple-500 px-4 py-1.5 text-xs font-bold text-white shadow-glow-md">
-            <Sparkles size={14} strokeWidth={2.5} />
-            הכי פופולרי
+          <div className="grid grid-cols-1 gap-6 border-y border-white/10 py-6 md:grid-cols-2 md:gap-8 md:py-8">
+            <div className="text-center md:text-right">
+              <div className="text-xs font-semibold uppercase tracking-wider text-white/50">
+                הקמה חד-פעמית
+              </div>
+              <div className="mt-2 flex items-baseline justify-center gap-1.5 md:justify-start">
+                <span className="text-4xl font-black tracking-tight md:text-5xl">
+                  2,500
+                </span>
+                <span className="text-xl font-bold text-white/70">₪</span>
+              </div>
+            </div>
+            <div className="text-center md:text-right">
+              <div className="text-xs font-semibold uppercase tracking-wider text-white/50">
+                תחזוקה חודשית
+              </div>
+              <div className="mt-2 flex items-baseline justify-center gap-1.5 md:justify-start">
+                <span className="text-4xl font-black tracking-tight md:text-5xl">
+                  250–350
+                </span>
+                <span className="text-xl font-bold text-white/70">₪</span>
+              </div>
+              <p className="mt-1 text-xs text-white/50">
+                כולל עדכוני תוכן, AI ו-API
+              </p>
+            </div>
+          </div>
+
+          <ul className="mt-7 space-y-3.5 md:mt-8">
+            {MAIN_FEATURES.map((feature) => (
+              <li
+                key={feature}
+                className="flex items-start gap-3 text-sm text-white/85 md:text-base"
+              >
+                <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/20 text-accent">
+                  <Check size={12} strokeWidth={3} />
+                </span>
+                <span className="leading-snug">{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href={waLink("היי, אני מעוניין בחבילת ההשקה של בוט הוואטסאפ")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 block rounded-full bg-accent px-6 py-4 text-center text-base font-semibold text-white shadow-glow-md transition-all hover:bg-accent-hover hover:shadow-glow-lg md:mt-10"
+          >
+            דברו איתנו בוואטסאפ
+          </a>
+
+          <p className="mt-4 text-center text-xs text-white/50">
+            ללא התחייבות. אפשר לבטל בכל חודש.
+          </p>
+        </motion.div>
+
+        <div className="mt-16 md:mt-24">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5 }}
+            className="text-center"
+          >
+            <h3 className="text-xl font-bold tracking-tight md:text-2xl">
+              תוספות לבחירה
+            </h3>
+            <p className="mt-2 text-sm text-white/60">
+              להוסיף בכל שלב — לא חובה.
+            </p>
+          </motion.div>
+
+          <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
+            {ADD_ONS.map((addon, i) => (
+              <motion.div
+                key={addon.name}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{
+                  duration: 0.5,
+                  delay: i * 0.1,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-navy-900/60 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-navy-900 hover:shadow-glow-md md:p-7"
+              >
+                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-inset ring-accent/20">
+                  <Plus size={20} strokeWidth={2.5} />
+                </div>
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h4 className="text-lg font-bold leading-snug md:text-xl">
+                    {addon.name}
+                  </h4>
+                  <span className="text-sm font-semibold text-accent-light">
+                    {addon.price}
+                  </span>
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-white/60 md:text-base">
+                  {addon.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
-      )}
-
-      <div className="mb-6">
-        <h3 className="text-2xl font-bold md:text-3xl">{pkg.name}</h3>
-        <p className="mt-1 text-sm text-white/60">{pkg.subtitle}</p>
       </div>
-
-      <div className="mb-8 flex items-baseline gap-1.5">
-        <span className="text-5xl font-black tracking-tight md:text-6xl">
-          {pkg.price}
-        </span>
-        <span className="text-2xl font-bold text-white/70">₪</span>
-      </div>
-
-      <ul className="mb-6 flex-1 space-y-3.5">
-        {pkg.features.map((feature) => (
-          <li
-            key={feature}
-            className="flex items-start gap-3 text-sm text-white/80 md:text-base"
-          >
-            <span
-              className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
-                pkg.featured
-                  ? "bg-accent/20 text-accent"
-                  : "bg-white/10 text-white/70"
-              }`}
-            >
-              <Check size={12} strokeWidth={3} />
-            </span>
-            <span className="leading-snug">{feature}</span>
-          </li>
-        ))}
-      </ul>
-
-      {/* Expandable details */}
-      <div className="mb-5">
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          className="flex w-full items-center justify-between gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm font-medium text-white/70 transition-colors hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
-        >
-          <span>{open ? "הסתירו פרטים" : "מה כלול בפירוט"}</span>
-          <motion.span
-            animate={{ rotate: open ? 180 : 0 }}
-            transition={{ duration: 0.2 }}
-            aria-hidden
-          >
-            <ChevronDown size={16} />
-          </motion.span>
-        </button>
-
-        <AnimatePresence initial={false}>
-          {open && (
-            <motion.div
-              key="details"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="overflow-hidden"
-            >
-              <p className="pt-3 text-sm leading-relaxed text-white/65">
-                {pkg.details}
-              </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-
-      <a
-        href={waLink(pkg.whatsappMessage)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`block rounded-full px-6 py-3.5 text-center text-base font-semibold transition-all ${
-          pkg.featured
-            ? "bg-accent text-white shadow-glow-md hover:bg-accent-hover hover:shadow-glow-lg"
-            : "border border-white/15 bg-white/5 text-white hover:border-white/30 hover:bg-white/10"
-        }`}
-      >
-        {pkg.cta}
-      </a>
-    </motion.div>
+    </section>
   );
 }

@@ -1,19 +1,36 @@
 # Pixelio
 
-> סוכנות אתרים לעסקים בישראל. בונה אתרים מקצועיים שמביאים לקוחות — לא רק נראים טוב.
+> סוכנות בוטי וואטסאפ AI לעסקים בישראל. בונה בוטים חכמים שעונים ללקוחות 24/7 בעברית טבעית.
 
 ## About
-Pixelio builds high-converting websites for businesses in Israel. Hebrew RTL optimized, mobile-first, fast loading, SEO-ready, and GEO-optimized for AI search engines.
+Pixelio builds AI-powered WhatsApp bots for small and medium businesses in Israel. Hebrew-native conversational AI that handles 90% of customer messages automatically — booking appointments, answering FAQs, qualifying leads — and escalates only what matters to the business owner.
 
-## Services
-- Basic Package (1,900 ₪): Single-page website + WhatsApp integration + Basic SEO
-- Plus Package (3,900 ₪): Multi-page website + Google My Business + Logo + Floating WhatsApp + Domain migration + Full SEO + GEO
-- Premium Package (6,900 ₪): Everything in Plus + Lead form + 30 days free maintenance + Advanced SEO + GEO + Custom keyword strategy
-- Maintenance Add-on: 249 ₪/month
+## Product
+- AI WhatsApp Bot — natural Hebrew conversation, 24/7 availability
+- Connects to WhatsApp Business
+- Custom knowledge base built per business
+- Dashboard for editing bot content and reviewing conversations
+- Optional integrations: calendar booking, payment links, Instagram + Facebook Messenger
+
+## Pricing
+- Launch Package — 2,500 ₪ one-time setup + 250–350 ₪/month maintenance (includes content updates, AI model updates, API costs)
+- Multi-Channel add-on — +100 ₪/month (Instagram + Facebook Messenger)
+- Calendar + Payments integration — +150 ₪/month
+- No long-term commitment. Cancel any month.
+
+## Process
+1. 30-minute kickoff call to understand the business
+2. We build the bot (5–7 days)
+3. Joint testing and tone calibration
+4. Goes live, connected to WhatsApp Business
+5. Ongoing maintenance and improvement
+
+## Live Demo
+A working demo is available at https://pixelio.co.il/demo — a bot impersonating "Lior Gal Hair Salon" in Hod HaSharon. Visitors can chat with it directly to experience the product.
 
 ## Contact
 - WhatsApp: +972587122010
 - Website: https://pixelio.co.il
 
 ## Target Audience
-Businesses in Israel — hair salons, restaurants, therapists, local service providers, e-commerce startups, established companies.
+Small and medium businesses in Israel that receive high volumes of WhatsApp messages — hair salons, beauty clinics, restaurants, therapists, fitness studios, local service providers. Ideal for owner-operators losing time and leads to repetitive customer questions.

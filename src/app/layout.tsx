@@ -17,22 +17,21 @@ const SITE_URL = "https://pixelio.co.il";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Pixelio — סוכנות אתרים לעסקים בישראל",
+    default: "Pixelio — בוטי וואטסאפ AI לעסקים בישראל",
     template: "%s | Pixelio",
   },
   description:
-    "בונים אתרים שמביאים לקוחות. חבילות השקה החל מ-1,900 ₪. אתר חי תוך יום-יומיים. עד 3 תשלומים.",
+    "בוט AI שעונה ללקוחות שלך 24/7 בעברית טבעית. מטפל ב-90% מההודעות אוטומטית. הקמה תוך 7 ימים. ללא התחייבות.",
   keywords: [
-    "בניית אתרים",
-    "סוכנות אתרים",
-    "אתר לעסק",
-    "אתרים לעסקים",
-    "בניית אתר תדמית",
-    "עיצוב אתרים",
-    "דף נחיתה",
-    "SEO",
-    "GEO",
-    "AI Search",
+    "בוט וואטסאפ",
+    "בוט AI",
+    "WhatsApp Bot",
+    "צ'אטבוט",
+    "בוט לעסק",
+    "אוטומציה לוואטסאפ",
+    "בינה מלאכותית לעסק",
+    "WhatsApp Business",
+    "בוט בעברית",
     "Pixelio",
   ],
   authors: [{ name: "Pixelio" }],
@@ -42,9 +41,9 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   openGraph: {
-    title: "Pixelio — סוכנות אתרים לעסקים בישראל",
+    title: "Pixelio — בוטי וואטסאפ AI לעסקים בישראל",
     description:
-      "בונים אתרים שמביאים לקוחות. חבילות השקה החל מ-1,900 ₪. אתר חי תוך יום-יומיים.",
+      "בוט AI שעונה ללקוחות שלך 24/7 בעברית טבעית. הקמה תוך 7 ימים. ללא התחייבות.",
     url: SITE_URL,
     siteName: "Pixelio",
     locale: "he_IL",
@@ -52,9 +51,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pixelio — סוכנות אתרים לעסקים בישראל",
+    title: "Pixelio — בוטי וואטסאפ AI לעסקים בישראל",
     description:
-      "בונים אתרים שמביאים לקוחות. חבילות השקה החל מ-1,900 ₪. אתר חי תוך יום-יומיים.",
+      "בוט AI שעונה ללקוחות שלך 24/7 בעברית טבעית. הקמה תוך 7 ימים.",
   },
   robots: {
     index: true,

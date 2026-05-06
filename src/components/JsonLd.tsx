@@ -5,7 +5,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "Pixelio",
   description:
-    "סוכנות אתרים לעסקים בישראל — בניית אתרים שמביאים לקוחות",
+    "סוכנות בוטי וואטסאפ AI לעסקים בישראל — בוטים חכמים שעונים ללקוחות 24/7",
   url: SITE_URL,
   logo: `${SITE_URL}/icon`,
   founder: {
@@ -67,8 +67,8 @@ export function ServicesJsonLd({ services }: { services: ServiceItem[] }) {
   const data = services.map((svc) => ({
     "@context": "https://schema.org",
     "@type": "Service",
-    name: `Pixelio — חבילת ${svc.name}`,
-    serviceType: "Web Design and Development",
+    name: `Pixelio — ${svc.name}`,
+    serviceType: "AI WhatsApp Chatbot Development",
     provider: {
       "@type": "Organization",
       name: "Pixelio",

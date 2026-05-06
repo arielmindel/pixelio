@@ -2,9 +2,9 @@ import Link from "next/link";
 import { waLink } from "@/lib/whatsapp";
 
 const QUICK_LINKS = [
-  { label: "עלינו", href: "#about" },
-  { label: "חבילות", href: "#packages" },
-  { label: "תיק עבודות", href: "#portfolio" },
+  { label: "איך זה עובד", href: "#solution" },
+  { label: "מחיר", href: "#packages" },
+  { label: "דמו חי", href: "/demo" },
   { label: "שאלות נפוצות", href: "#faq" },
 ];
 
@@ -20,7 +20,7 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-3 text-sm text-white/60">
-              אתרים שמביאים לקוחות.
+              בוטי וואטסאפ AI לעסקים בישראל.
             </p>
           </div>
 

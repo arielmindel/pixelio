@@ -1,15 +1,11 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Problem } from "@/components/Problem";
-import { Packages } from "@/components/Packages";
-import { MaintenanceAddon } from "@/components/MaintenanceAddon";
+import { Solution } from "@/components/Solution";
 import { Process } from "@/components/Process";
-import { Portfolio } from "@/components/Portfolio";
-import { ClientLogos } from "@/components/ClientLogos";
-import { WhyPixelio } from "@/components/WhyPixelio";
-import { Testimonials } from "@/components/Testimonials";
+import { DemoCTA } from "@/components/DemoCTA";
+import { Packages } from "@/components/Packages";
 import { FAQ } from "@/components/FAQ";
-import { ContactForm } from "@/components/ContactForm";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
@@ -21,15 +17,11 @@ export default function Home() {
         <Navbar />
         <Hero />
         <Problem />
-        <Packages />
-        <MaintenanceAddon />
+        <Solution />
         <Process />
-        <Portfolio />
-        <ClientLogos />
-        <WhyPixelio />
-        <Testimonials />
+        <DemoCTA />
+        <Packages />
         <FAQ />
-        <ContactForm />
         <FinalCTA />
       </main>
       <Footer />

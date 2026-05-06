@@ -1,35 +1,46 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageSquareOff, Repeat, MoonStar, type LucideIcon } from "lucide-react";
+import {
+  Clock,
+  Languages,
+  CalendarCheck,
+  Filter,
+  type LucideIcon,
+} from "lucide-react";
 
-type Problem = {
+type Feature = {
   icon: LucideIcon;
   title: string;
   body: string;
 };
 
-const PROBLEMS: Problem[] = [
+const FEATURES: Feature[] = [
   {
-    icon: MessageSquareOff,
-    title: "הודעות לא נענות",
-    body: "30+ הודעות וואטסאפ ביום, אין זמן לענות לכולן בזמן. לקוחות פוטנציאליים עוברים למתחרים.",
+    icon: Clock,
+    title: "עונה אוטומטית 24/7",
+    body: "שעות הבוקר, אמצע הלילה, סופ״ש — הבוט עונה תוך שניות, תמיד.",
   },
   {
-    icon: Repeat,
-    title: "תשובות חוזרות",
-    body: "אותן שאלות 50 פעם בשבוע — שעות, מחירים, איך מגיעים. עבודה חוזרת שמתישה.",
+    icon: Languages,
+    title: "מבין עברית טבעית",
+    body: "לא תפריטים. שיחה אמיתית. הלקוחות לא מרגישים שהם מדברים עם בוט.",
   },
   {
-    icon: MoonStar,
-    title: "אובדן הזמנות בלילה",
-    body: "הלקוח שואל ב-23:00, אתה רואה רק בבוקר. הוא כבר מצא מישהו אחר.",
+    icon: CalendarCheck,
+    title: "קובע תורים בעצמו",
+    body: "בודק זמינות ביומן, מציע שעות, מאשר וסוגר תור — בלי שתתערב.",
+  },
+  {
+    icon: Filter,
+    title: "מעביר אליך רק מה שחשוב",
+    body: "מטפל בשאלות הקלות לבד. רק לידים חמים ובקשות מיוחדות מגיעים אליך.",
   },
 ];
 
-export function Problem() {
+export function Solution() {
   return (
-    <section id="about" className="relative py-20 md:py-32">
+    <section id="solution" className="relative py-20 md:py-32">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -39,25 +50,25 @@ export function Problem() {
           className="mx-auto max-w-3xl text-center"
         >
           <h2 className="text-balance text-3xl font-black leading-tight tracking-tight md:text-5xl">
-            למה עסקים מאבדים לקוחות בוואטסאפ?
+            בוט אחד. ארבע יכולות שמשנות הכל.
           </h2>
           <p className="mt-5 text-base text-white/60 md:text-lg">
-            שלוש סיבות שאנחנו רואים כמעט בכל יום — וכולן ניתנות לתיקון.
+            לא צ&apos;אטבוט עם תפריטים. AI שמדבר עם הלקוחות שלך כמו בן אדם.
           </p>
         </motion.div>
 
-        <div className="mt-14 grid grid-cols-1 gap-5 md:mt-20 md:grid-cols-3 md:gap-6">
-          {PROBLEMS.map((problem, i) => {
-            const Icon = problem.icon;
+        <div className="mt-14 grid grid-cols-1 gap-5 md:mt-20 md:grid-cols-2 md:gap-6">
+          {FEATURES.map((feature, i) => {
+            const Icon = feature.icon;
             return (
               <motion.div
-                key={problem.title}
+                key={feature.title}
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{
                   duration: 0.6,
-                  delay: i * 0.12,
+                  delay: i * 0.1,
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 className="group relative overflow-hidden rounded-2xl border border-white/10 bg-navy-900/60 p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-navy-900 hover:shadow-glow-md md:p-8"
@@ -72,10 +83,10 @@ export function Problem() {
                 </div>
 
                 <h3 className="mb-2 text-xl font-bold leading-snug md:text-2xl">
-                  {problem.title}
+                  {feature.title}
                 </h3>
                 <p className="text-sm leading-relaxed text-white/60 md:text-base">
-                  {problem.body}
+                  {feature.body}
                 </p>
               </motion.div>
             );
