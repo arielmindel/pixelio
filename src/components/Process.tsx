@@ -75,7 +75,7 @@ export function Process() {
           <div className="pointer-events-none absolute inset-x-0 top-8 hidden md:block">
             <div className="relative mx-auto h-px max-w-[88%] bg-white/10">
               <motion.div
-                className="absolute inset-y-0 right-0 origin-right bg-gradient-to-l from-accent via-accent to-purple-500"
+                className="absolute inset-y-0 right-0 origin-right bg-accent"
                 style={{ scaleX, width: "100%" }}
               />
             </div>
@@ -83,7 +83,7 @@ export function Process() {
 
           <div className="pointer-events-none absolute bottom-0 right-8 top-0 w-px bg-white/10 md:hidden">
             <motion.div
-              className="absolute inset-x-0 top-0 origin-top bg-gradient-to-b from-accent to-purple-500"
+              className="absolute inset-x-0 top-0 origin-top bg-accent"
               style={{ scaleY: scaleX, height: "100%" }}
             />
           </div>
@@ -104,9 +104,9 @@ export function Process() {
                   }}
                   className="relative flex gap-5 md:flex-col md:items-center md:text-center md:gap-0"
                 >
-                  <div className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-white/10 bg-navy-900 text-accent shadow-glow-sm">
+                  <div className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-white/10 bg-navy-900 text-white/80">
                     <Icon size={24} strokeWidth={2} />
-                    <div className="absolute -top-2 -left-2 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-accent to-purple-500 text-xs font-black text-white shadow-glow-sm">
+                    <div className="absolute -top-2 -left-2 flex h-7 w-7 items-center justify-center rounded-full bg-accent text-xs font-black text-white">
                       {i + 1}
                     </div>
                   </div>

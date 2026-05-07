@@ -16,14 +16,10 @@ export function DemoCTA() {
         >
           <div
             aria-hidden
-            className="absolute -top-32 left-1/2 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-accent/15 blur-[100px]"
-          />
-          <div
-            aria-hidden
-            className="absolute -bottom-32 left-1/2 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-purple-500/15 blur-[100px]"
+            className="absolute -top-32 left-1/2 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-accent/12 blur-[100px]"
           />
 
-          <div className="mx-auto mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 text-accent ring-1 ring-inset ring-accent/20">
+          <div className="mx-auto mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 text-white/80 ring-1 ring-inset ring-white/10">
             <MessageSquareText size={26} strokeWidth={2} />
           </div>
 

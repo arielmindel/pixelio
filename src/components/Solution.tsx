@@ -71,14 +71,9 @@ export function Solution() {
                   delay: i * 0.1,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-navy-900/60 p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-navy-900 hover:shadow-glow-md md:p-8"
+                className="group relative rounded-2xl border border-white/10 bg-navy-900/60 p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-navy-900 md:p-8"
               >
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-accent/0 via-accent/0 to-accent/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                />
-
-                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-inset ring-accent/20">
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/5 text-white/80 ring-1 ring-inset ring-white/10">
                   <Icon size={24} strokeWidth={2} />
                 </div>
 

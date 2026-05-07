@@ -73,10 +73,10 @@ export function Packages() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mx-auto mt-14 max-w-2xl rounded-2xl border-2 border-accent bg-gradient-to-b from-navy-800 to-navy-900 p-7 shadow-glow-lg md:mt-20 md:p-10"
+          className="relative mx-auto mt-14 max-w-2xl rounded-2xl border border-white/15 bg-navy-900 p-7 md:mt-20 md:p-10"
         >
           <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-            <div className="flex items-center gap-1.5 rounded-full bg-gradient-to-l from-accent to-purple-500 px-4 py-1.5 text-xs font-bold text-white shadow-glow-md">
+            <div className="flex items-center gap-1.5 rounded-full bg-accent px-4 py-1.5 text-xs font-bold text-white">
               <Sparkles size={14} strokeWidth={2.5} />
               חבילת השקה
             </div>
@@ -123,7 +123,7 @@ export function Packages() {
                 key={feature}
                 className="flex items-start gap-3 text-sm text-white/85 md:text-base"
               >
-                <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/20 text-accent">
+                <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-white/80">
                   <Check size={12} strokeWidth={3} />
                 </span>
                 <span className="leading-snug">{feature}</span>
@@ -173,16 +173,16 @@ export function Packages() {
                   delay: i * 0.1,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-navy-900/60 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-navy-900 hover:shadow-glow-md md:p-7"
+                className="group relative rounded-2xl border border-white/10 bg-navy-900/60 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-navy-900 md:p-7"
               >
-                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-inset ring-accent/20">
+                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-white/80 ring-1 ring-inset ring-white/10">
                   <Plus size={20} strokeWidth={2.5} />
                 </div>
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <h4 className="text-lg font-bold leading-snug md:text-xl">
                     {addon.name}
                   </h4>
-                  <span className="text-sm font-semibold text-accent-light">
+                  <span className="text-sm font-semibold text-white/70">
                     {addon.price}
                   </span>
                 </div>

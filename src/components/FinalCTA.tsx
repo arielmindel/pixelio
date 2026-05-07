@@ -8,21 +8,14 @@ import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 export function FinalCTA() {
   return (
     <section id="contact" className="relative overflow-hidden py-24 md:py-32">
+      <div aria-hidden className="absolute inset-0 -z-20 bg-navy-950" />
       <div
         aria-hidden
-        className="absolute inset-0 -z-20 animate-gradient bg-[length:200%_200%]"
-        style={{
-          background:
-            "linear-gradient(135deg, #1E3A8A 0%, #312E81 40%, #6D28D9 70%, #1E3A8A 100%)",
-        }}
+        className="absolute inset-0 -z-10 opacity-[0.05] mix-blend-overlay bg-grain"
       />
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 opacity-[0.08] mix-blend-overlay bg-grain"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 bg-gradient-to-b from-navy-950/40 via-transparent to-navy-950/60"
+        className="absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/15 blur-[140px]"
       />
 
       <div className="mx-auto max-w-3xl px-5 text-center md:px-8">

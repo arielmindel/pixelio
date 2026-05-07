@@ -17,29 +17,18 @@ export function Hero() {
       id="top"
       className="relative isolate overflow-hidden pb-20 pt-36 md:pb-32 md:pt-44"
     >
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-20 animate-gradient bg-[length:200%_200%]"
-        style={{
-          background:
-            "linear-gradient(135deg, #0A0E1A 0%, #1E1B4B 25%, #312E81 50%, #1E3A8A 75%, #0A0E1A 100%)",
-        }}
-      />
+      <div aria-hidden className="absolute inset-0 -z-20 bg-navy-950" />
 
       <div aria-hidden className="absolute inset-0 -z-10 bg-spotlight" />
 
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 opacity-[0.08] mix-blend-overlay bg-grain"
+        className="absolute inset-0 -z-10 opacity-[0.06] mix-blend-overlay bg-grain"
       />
 
       <div
         aria-hidden
-        className="absolute -top-40 right-1/4 -z-10 h-96 w-96 rounded-full bg-accent/20 blur-[120px]"
-      />
-      <div
-        aria-hidden
-        className="absolute -bottom-40 left-1/4 -z-10 h-96 w-96 rounded-full bg-purple-500/20 blur-[120px]"
+        className="absolute -top-40 right-1/4 -z-10 h-96 w-96 rounded-full bg-accent/15 blur-[120px]"
       />
 
       <div className="mx-auto max-w-6xl px-5 text-center md:px-8">
